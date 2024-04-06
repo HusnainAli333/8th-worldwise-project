@@ -3,7 +3,7 @@
     {
       "cityName": "Lisbon",
       "country": "Portugal",
-      "emoji": "PT",
+      "emoji": "pt",
       "date": "2027-10-31T15:59:59.138Z",
       "notes": "My favorite city so far!",
       "position": {
@@ -15,7 +15,7 @@
     {
       "cityName": "Lisbon",
       "country": "Portugal",
-      "emoji": "PT",
+      "emoji": "pt",
       "date": "2027-10-31T15:59:59.138Z",
       "notes": "My favorite city so far!",
       "position": {
@@ -27,9 +27,9 @@
     {
       "cityName": "Madrid",
       "country": "Spain",
-      "emoji": "ES",
+      "emoji": "es",
       "date": "2027-07-15T08:22:53.976Z",
-      "notes": "",
+      "notes": "jsafjelwo;ijf ialjf faljfaf;iljfaijfalfjaifja;ijfailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjailjfaijfalfjaifjafijaisjfeaijfiajfejaijeifjafijaifj;aijfaijfaifjiaj;ijf ialjf faljfaf;iljfaijfalfjaifja;ijfafijaisjfeaijfiajfejaijeifjafijaifj;aijfaijfaifjiaj;ijf ialjf faljfaf;iljfaijfalfjaifja;ijfafijaisjfeaijfiajfejaijeifjafijaifj;aijfaijfaifjiaj;ijf ialjf faljfaf;iljfaijfalfjaifja;ijfafijaisjfeaijfiajfejaijeifjafijaifj;aijfaijfaifjiaj",
       "position": {
         "lat": 40.46635901755316,
         "lng": -3.7133789062500004
@@ -39,7 +39,7 @@
     {
       "cityName": "Berlin",
       "country": "Germany",
-      "emoji": "DE",
+      "emoji": "de",
       "date": "2027-02-12T09:24:11.863Z",
       "notes": "Amazing 😃",
       "position": {

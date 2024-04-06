@@ -3,7 +3,10 @@ import styles from "../css/components/CityList.module.css";
 import styles2 from "../css/components/City.module.css";
 import Spinner from "../components/Spinner";
 import { Link } from "react-router-dom";
-export default function CityList({ state }) {
+import { useCities } from "../context/CitiesContext";
+export default function CityList() {
+  const { state } = useCities();
+
   if (state.status === "loading") {
     return <Spinner />;
   }
@@ -33,11 +36,13 @@ const formatDate = (date) =>
 
 function City({ value }) {
   const tolowercase = value.emoji.toLowerCase();
-
+  const { state } = useCities();
   return (
     <Link
       to={`${value.id}?lat=${value.position.lat}&lng=${value.position.lng}`}
-      className={styles2.cityItem}
+      className={`${styles2.cityItem} ${
+        value.id === state.currentCity.id ? styles2["cityItem--active"] : " "
+      } `}
     >
       <span
         className={`flag-icon flag-icon-${tolowercase}`}

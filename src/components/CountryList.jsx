@@ -2,7 +2,9 @@
 import styles from "../css/components/CountryList.module.css";
 import styles2 from "../css/components/Country.module.css";
 import Spinner from "../components/Spinner";
-export default function CountryList({ state }) {
+import { useCities } from "../context/CitiesContext";
+export default function CountryList() {
+  const { state } = useCities();
   if (state.status === "loading") {
     return <Spinner />;
   }
