@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useCities } from "../context/CitiesContext";
-import styles from "../css/components/City1.module.css";
 import { useParams } from "react-router-dom";
-import Button from "./Button";
-import { useNavigate } from "react-router-dom";
+import { useCities } from "../contexts/CitiesContext";
+import BackButton from "./BackButton";
+import styles from "./City.module.css";
+import Spinner from "./Spinner";
 
 const formatDate = (date) =>
   new Intl.DateTimeFormat("en", {
@@ -15,62 +15,53 @@ const formatDate = (date) =>
 
 function City() {
   const { id } = useParams();
-  const { getCity, state } = useCities();
+  const { getCity, currentCity, isLoading } = useCities();
 
-  const navigate = useNavigate();
   useEffect(
     function () {
       getCity(id);
     },
-    [id]
+    [id, getCity]
   );
+
+  const { cityName, emoji, date, notes } = currentCity;
+
+  if (isLoading) return <Spinner />;
 
   return (
     <div className={styles.city}>
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span
-            className={`flag-icon flag-icon-${state.currentCity.emoji}`}
-            title={state.currentCity.emoji}
-          ></span>
-          {state.currentCity.cityName}
+          <span>{emoji}</span> {cityName}
         </h3>
       </div>
 
       <div className={styles.row}>
-        <h6>You went to {state.currentCity.cityName} on</h6>
-        <p>{formatDate(state.currentCity.date || null)}</p>
+        <h6>You went to {cityName} on</h6>
+        <p>{formatDate(date || null)}</p>
       </div>
 
-      {state.currentCity.notes && (
+      {notes && (
         <div className={styles.row}>
           <h6>Your notes</h6>
-          <p>{state.currentCity.notes}</p>
+          <p>{notes}</p>
         </div>
       )}
 
       <div className={styles.row}>
         <h6>Learn more</h6>
         <a
-          href={`https://en.wikipedia.org/wiki/${state.currentCity.cityName}`}
+          href={`https://en.wikipedia.org/wiki/${cityName}`}
           target="_blank"
           rel="noreferrer"
         >
-          Check out {state.currentCity.cityName} on Wikipedia &rarr;
+          Check out {cityName} on Wikipedia &rarr;
         </a>
       </div>
 
       <div>
-        <Button
-          type="back"
-          onclick={(e) => {
-            e.preventDefault();
-            navigate(-1);
-          }}
-        >
-          &larr; back
-        </Button>
+        <BackButton />
       </div>
     </div>
   );

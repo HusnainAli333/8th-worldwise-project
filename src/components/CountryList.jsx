@@ -1,49 +1,32 @@
-/* eslint-disable react/prop-types */
-import styles from "../css/components/CountryList.module.css";
-import styles2 from "../css/components/Country.module.css";
-import Spinner from "../components/Spinner";
-import { useCities } from "../context/CitiesContext";
-export default function CountryList() {
-  const { state } = useCities();
-  if (state.status === "loading") {
-    return <Spinner />;
-  }
+import Spinner from "./Spinner";
+import styles from "./CountryList.module.css";
+import CountryItem from "./CountryItem";
+import Message from "./Message";
+import { useCities } from "../contexts/CitiesContext";
 
-  if (!state.citiesList.length)
+function CountryList() {
+  const { cities, isLoading } = useCities();
+
+  if (isLoading) return <Spinner />;
+
+  if (!cities.length)
     return (
-      <>
-        <h2> ✋ No cities Added yet </h2>
-        <h3>Add Your first city by clicking on map ☝️</h3>
-      </>
+      <Message message="Add your first city by clicking on a city on the map" />
     );
-  const countries = state.citiesList.reduce((p, c) => {
-    if (!p.map((value) => value.country).includes(c.country)) {
-      return [...p, { country: c.country, emoji: c.emoji }];
-    } else {
-      return p;
-    }
+
+  const countries = cities.reduce((arr, city) => {
+    if (!arr.map((el) => el.country).includes(city.country))
+      return [...arr, { country: city.country, emoji: city.emoji }];
+    else return arr;
   }, []);
 
   return (
     <ul className={styles.countryList}>
-      {countries?.map((value, index) => (
-        <Country value={value} key={index} />
+      {countries.map((country) => (
+        <CountryItem country={country} key={country.country} />
       ))}
     </ul>
   );
 }
 
-function Country({ value }) {
-  const tolowercase = value.emoji.toLowerCase();
-
-  return (
-    <li className={styles2.countryItem}>
-      <span
-        className={`flag-icon flag-icon-${tolowercase}`}
-        title={value.emoji}
-      ></span>
-
-      <span>{value.country}</span>
-    </li>
-  );
-}
+export default CountryList;
